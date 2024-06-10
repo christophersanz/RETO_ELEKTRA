@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: "Customer Service API"
+  description: "API for managing customers"
+paths:
+  /api/customers:
+    get:
+      summary: "Get all customers"
+      responses:
+        default:
+        '200':
+          description: "List of customers"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: '#/components/schemas/Customer'
+
+  /api/customers/{id}:
+    get:
+      summary: "Get a customer by ID"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+      responses:
+        default:
+        '200':
+          description: "Customer details"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+components:
+  schemas:
+    Customer:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+        nombre:
+          type: "string"
+        apellidoPaterno:
+          type: "string"
+        apellidoMaterno:
+          type: "string"
+        fechaNacimiento:
+          type: "string"
+          format: "date"
+        sexo:
+          type: "string"
+          enum:
+            - "M"
+            - "F"
+        correo:
+          type: "string"
+          format: "email"
+        telefono:
+          type: "string"
+          pattern: "^[0-9]{10}$"
+      required:
+        - nombre
+        - apellidoPaterno
+        - apellidoMaterno

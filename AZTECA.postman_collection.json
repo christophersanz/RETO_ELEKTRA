@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "0bab5446-b798-4a9f-8572-e9f9fc379d14",
+		"name": "AZTECA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7308478"
+	},
+	"item": [
+		{
+			"name": "ms-customer-create",
+			"item": [
+				{
+					"name": "Crear primer cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Christopher\",\r\n    \"apellidoPaterno\": \"Sánchez\",\r\n    \"apellidoMaterno\": \"Calderón\",\r\n    \"fechaNacimiento\": \"1990-01-15\",\r\n    \"sexo\": \"M\",\r\n    \"correo\": \"s.christopher3@gmail.com\",\r\n    \"telefono\": \"1962296846\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9080/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9080",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear segundo cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Gaela\",\r\n    \"apellidoPaterno\": \"Sánchez\",\r\n    \"apellidoMaterno\": \"Marianne\",\r\n    \"fechaNacimiento\": \"2017-01-15\",\r\n    \"sexo\": \"F\",\r\n    \"correo\": \"gaela.sanchez.marianne@gmail.com\",\r\n    \"telefono\": \"1962296846\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9080/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9080",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validar campo nombre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"\",\r\n    \"apellidoPaterno\": \"Sánchez\",\r\n    \"apellidoMaterno\": \"Calderón\",\r\n    \"fechaNacimiento\": \"1990-01-15\",\r\n    \"sexo\": \"M\",\r\n    \"correo\": \"s.christopher3@gmail.com\",\r\n    \"telefono\": \"1962296846\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9080/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9080",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ms-customer-info",
+			"item": [
+				{
+					"name": "Listar Clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9081/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9081",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar primer cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9081/api/customers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9081",
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar segundo cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9081/api/customers/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9081",
+							"path": [
+								"api",
+								"customers",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validar existencia de cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9081/api/customers/500",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9081",
+							"path": [
+								"api",
+								"customers",
+								"500"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

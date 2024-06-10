@@ -1,0 +1,60 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Customer Service API"
+  description: "API for managing customers"
+paths:
+  /api/customers:
+    get:
+      summary: "Get all customers"
+      responses:
+        '200':
+          description: "List of customers"
+          schema:
+            type: "array"
+            items:
+              $ref: '#/definitions/Customer'
+
+  /api/customers/{id}:
+    get:
+      summary: "Get a customer by ID"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
+      responses:
+        '200':
+          description: "Customer details"
+          schema:
+            $ref: '#/definitions/Customer'
+definitions:
+  Customer:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      nombre:
+        type: "string"
+      apellidoPaterno:
+        type: "string"
+      apellidoMaterno:
+        type: "string"
+      fechaNacimiento:
+        type: "string"
+        format: "date"
+      sexo:
+        type: "string"
+        enum:
+          - "M"
+          - "F"
+      correo:
+        type: "string"
+        format: "email"
+      telefono:
+        type: "string"
+        pattern: "^[0-9]{10}$"
+    required:
+      - nombre
+      - apellidoPaterno
+      - apellidoMaterno

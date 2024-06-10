@@ -1,0 +1,59 @@
+version: '3.7'
+services:
+
+  ms-customer-create:
+    build:
+      context: /ms-customer-create
+      dockerfile: Dockerfile
+      target: deployment
+    image: image-ms-customer-create
+    container_name: ms-customer-create
+    restart: always
+    volumes:
+      - traces-create:/app/logs
+    ports:
+      - 9080:9080
+    depends_on:
+      - mysqldb
+    networks:
+      - network
+      
+  ms-customer-info:
+    build:
+      context: /ms-customer-info
+      dockerfile: Dockerfile
+      target: deployment
+    image: image-ms-customer-info
+    container_name: ms-customer-info
+    restart: always
+    volumes:
+      - traces-info:/app/logs
+    ports:
+      - 9081:9081
+    depends_on:
+      - mysqldb
+    networks:
+      - network
+
+  mysqldb:
+    image: mysql:5.7
+    container_name: mysqldb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: customersdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - 3306:3306
+    networks:
+      - network
+
+volumes:
+  traces-create:
+  traces-info:
+  
+networks:
+  network:
+    driver: bridge
+    name: network_demo_customer
